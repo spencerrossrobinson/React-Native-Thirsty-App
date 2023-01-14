@@ -1,0 +1,15 @@
+import { View, Text } from "react-native";
+import { Input, Card, Button } from "react-native-elements";
+
+const ContactScreen = () => {
+  return (
+    <Card>
+      <Card.Title>Contact Us!</Card.Title>
+      <Input placeholder="Name" />
+      <Input placeholder="Email" />
+      <Button type="outline" title="Submit" />
+    </Card>
+  );
+};
+
+export default ContactScreen;

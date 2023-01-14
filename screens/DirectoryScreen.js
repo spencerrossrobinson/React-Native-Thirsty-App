@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { FlatList } from "react-native";
-import { Avatar, ListItem } from "react-native-elements";
+import { FlatList, View } from "react-native";
+import { Avatar, ListItem, Badge } from "react-native-elements";
 import { BARS } from "../shared/bars";
 
 const DirectoryScreen = ({ navigation }) => {
@@ -9,10 +9,23 @@ const DirectoryScreen = ({ navigation }) => {
   const renderDirectoryItem = ({ item: bar }) => {
     return (
       <ListItem onPress={() => navigation.navigate("BarInfo", { bar })}>
-        <Avatar source={bar.image} rounded />
+        <View>
+          <Avatar source={bar.image} size="xlarge" rounded />
+          <Badge
+            value={bar.rating}
+            status="success"
+            textStyle={{ fontSize: 16 }}
+            containerStyle={{
+              position: "absolute",
+            }}
+            badgeStyle={{ height: 30, width: 50 }}
+          />
+        </View>
         <ListItem.Content>
           <ListItem.Title>{bar.name}</ListItem.Title>
-          <ListItem.Subtitle>{bar.description}</ListItem.Subtitle>
+          <ListItem.Subtitle>
+            {bar.location} - {bar.money}
+          </ListItem.Subtitle>
         </ListItem.Content>
       </ListItem>
     );
