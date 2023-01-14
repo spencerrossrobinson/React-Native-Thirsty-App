@@ -13,7 +13,6 @@ import ApothekeImg from "../assets/images/apotheke.jpeg";
 import EscaImg from "../assets/images/nata.jpeg";
 import LostImg from "../assets/images/lost.jpeg";
 import AmnesiaImg from "../assets/images/amnesia.jpeg";
-import startDrinkImg from "../assets/images/spanishGinAndTonic.jpeg";
 
 export const BARS = [
   {
@@ -180,12 +179,5 @@ export const BARS = [
     money: "$$$",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Adipiscing at in tellus integer feugiat scelerisque varius morbi enim. Viverra orci sagittis eu volutpat odio facilisis mauris. Nec nam aliquam sem et tortor.",
-  },
-  {
-    id: 15,
-    name: "Start Drinking!",
-    image: startDrinkImg,
-    hashtag: "#drinkingwithThirsty",
-    featured: true,
   },
 ];
