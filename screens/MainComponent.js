@@ -4,14 +4,15 @@ import BarInfoScreen from "./BarInfoScreen";
 import DirectoryScreen from "./DirectoryScreen";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createDrawerNavigator } from "@react-navigation/drawer";
-import HomeScreen from "./HomeScreen";
+import AboutScreen from "./AboutScreen";
 import ContactScreen from "./ContactScreen";
+import HomeScreen from "./HomeScreen";
 
 const Drawer = createDrawerNavigator();
 
 const screenOptions = {
   headerTintColor: "#fff",
-  headerStyle: { backgroundColor: "#e76f51" },
+  headerStyle: { backgroundColor: "#f95738" },
 };
 
 const HomeNavigator = () => {
@@ -21,7 +22,19 @@ const HomeNavigator = () => {
       <Stack.Screen
         name="Home"
         component={HomeScreen}
-        options={{ title: "Home" }}
+        options={{ title: "Thirsty." }}
+      />
+    </Stack.Navigator>
+  );
+};
+const AboutNavigator = () => {
+  const Stack = createStackNavigator();
+  return (
+    <Stack.Navigator screenOptions={screenOptions}>
+      <Stack.Screen
+        name="About"
+        component={AboutScreen}
+        options={{ title: "About" }}
       />
     </Stack.Navigator>
   );
@@ -44,7 +57,7 @@ const DirectoryNavigator = () => {
   return (
     <Stack.Navigator initialRouteName="Directory" screenOptions={screenOptions}>
       <Stack.Screen
-        name="Directory"
+        name="Bar Directory"
         component={DirectoryScreen}
         options={{ title: "Bar Directory" }}
       />
@@ -67,7 +80,7 @@ const Main = () => {
     >
       <Drawer.Navigator
         initialRouteName="Home"
-        drawerStyle={{ backgroundColor: "#f4a261" }}
+        drawerStyle={{ backgroundColor: "#f4d35e" }}
       >
         <Drawer.Screen
           name="Home"
@@ -75,9 +88,14 @@ const Main = () => {
           options={{ title: "Home" }}
         />
         <Drawer.Screen
-          name="Directory"
+          name="About"
+          component={AboutNavigator}
+          options={{ title: "About" }}
+        />
+        <Drawer.Screen
+          name="Bar Directory"
           component={DirectoryNavigator}
-          options={{ title: "Directory" }}
+          options={{ title: "Bar Directory" }}
         />
         <Drawer.Screen
           name="Contact"

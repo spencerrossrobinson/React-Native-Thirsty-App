@@ -1,6 +1,5 @@
 import { Text, View } from "react-native";
 import { Card, Rating } from "react-native-elements";
-import { color } from "react-native-reanimated";
 
 const RenderBar = ({ bar }) => {
   if (bar) {
@@ -9,7 +8,7 @@ const RenderBar = ({ bar }) => {
         containerStyle={{
           padding: 0,
           borderRadius: 25,
-          backgroundColor: "#ffe8d6",
+          backgroundColor: "#f7fff7",
         }}
       >
         <Card.Title
@@ -20,10 +19,11 @@ const RenderBar = ({ bar }) => {
             marginTop: 10,
           }}
         >
-          {bar.name}
+          {bar.name} - {bar.rating}
         </Card.Title>
         <Card.Image source={bar.image}></Card.Image>
-        <Text style={{ margin: 20, textAlign: "center" }}>
+        <Text style={{ margin: 10, textAlign: "center" }}>{bar.money}</Text>
+        <Text style={{ marginTop: 5, marginBottom: 20, textAlign: "center" }}>
           {bar.description}
         </Text>
         <Text

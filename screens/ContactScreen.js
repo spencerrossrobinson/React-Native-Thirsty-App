@@ -5,7 +5,8 @@ const ContactScreen = () => {
   return (
     <Card>
       <Card.Title>Contact Us!</Card.Title>
-      <Input placeholder="Name" />
+      <Input placeholder="First Name" />
+      <Input placeholder="Last Name" />
       <Input placeholder="Email" />
       <Button type="outline" title="Submit" />
     </Card>
