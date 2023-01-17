@@ -3,10 +3,18 @@ import { View, Platform } from "react-native";
 import BarInfoScreen from "./BarInfoScreen";
 import DirectoryScreen from "./DirectoryScreen";
 import { createStackNavigator } from "@react-navigation/stack";
-import { createDrawerNavigator } from "@react-navigation/drawer";
+import {
+  createDrawerNavigator,
+  DrawerContentScrollView,
+  DrawerItemList,
+} from "@react-navigation/drawer";
 import AboutScreen from "./AboutScreen";
 import ContactScreen from "./ContactScreen";
 import HomeScreen from "./HomeScreen";
+import CountryScreen from "./CountryScreen";
+import UsaScreen from "./UsaScreen";
+import SpainScreen from "./SpainScreen";
+import FranceScreen from "./FranceScreen";
 
 const Drawer = createDrawerNavigator();
 
@@ -39,6 +47,42 @@ const AboutNavigator = () => {
     </Stack.Navigator>
   );
 };
+const UsaNavigator = () => {
+  const Stack = createStackNavigator();
+  return (
+    <Stack.Navigator screenOptions={screenOptions}>
+      <Stack.Screen
+        name="U.S.A"
+        component={UsaScreen}
+        options={{ title: "U.S.A" }}
+      />
+    </Stack.Navigator>
+  );
+};
+const SpainNavigator = () => {
+  const Stack = createStackNavigator();
+  return (
+    <Stack.Navigator screenOptions={screenOptions}>
+      <Stack.Screen
+        name="Spain"
+        component={SpainScreen}
+        options={{ title: "Spain" }}
+      />
+    </Stack.Navigator>
+  );
+};
+const FranceNavigator = () => {
+  const Stack = createStackNavigator();
+  return (
+    <Stack.Navigator screenOptions={screenOptions}>
+      <Stack.Screen
+        name="France"
+        component={FranceScreen}
+        options={{ title: "France" }}
+      />
+    </Stack.Navigator>
+  );
+};
 const ContactNavigator = () => {
   const Stack = createStackNavigator();
   return (
@@ -47,6 +91,18 @@ const ContactNavigator = () => {
         name="Contact"
         component={ContactScreen}
         options={{ title: "Contact" }}
+      />
+    </Stack.Navigator>
+  );
+};
+const CountryNavigator = () => {
+  const Stack = createStackNavigator();
+  return (
+    <Stack.Navigator screenOptions={screenOptions}>
+      <Stack.Screen
+        name="Country"
+        component={CountryScreen}
+        options={{ title: "Country" }}
       />
     </Stack.Navigator>
   );
@@ -81,6 +137,30 @@ const Main = () => {
       <Drawer.Navigator
         initialRouteName="Home"
         drawerStyle={{ backgroundColor: "#f4d35e" }}
+        drawerContent={(props) => {
+          const filteredProps = {
+            ...props,
+            state: {
+              ...props.state,
+              routeNames: props.state.routeNames.filter((routeName) => {
+                routeName !== "U.S.A" &&
+                  routeName !== "Spain" &&
+                  routeName !== "France";
+              }),
+              routes: props.state.routes.filter(
+                (route) =>
+                  route.name !== "U.S.A" &&
+                  route.name !== "Spain" &&
+                  route.name !== "France"
+              ),
+            },
+          };
+          return (
+            <DrawerContentScrollView {...filteredProps}>
+              <DrawerItemList {...filteredProps} />
+            </DrawerContentScrollView>
+          );
+        }}
       >
         <Drawer.Screen
           name="Home"
@@ -98,10 +178,18 @@ const Main = () => {
           options={{ title: "Bar Directory" }}
         />
         <Drawer.Screen
+          name="Find Your City"
+          component={CountryNavigator}
+          options={{ title: "Find Your City" }}
+        />
+        <Drawer.Screen
           name="Contact"
           component={ContactNavigator}
           options={{ title: "Contact" }}
         />
+        <Drawer.Screen name="U.S.A" component={UsaNavigator} />
+        <Drawer.Screen name="Spain" component={SpainNavigator} />
+        <Drawer.Screen name="France" component={FranceNavigator} />
       </Drawer.Navigator>
     </View>
   );
