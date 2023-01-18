@@ -15,6 +15,7 @@ import CountryScreen from "./CountryScreen";
 import UsaScreen from "./UsaScreen";
 import SpainScreen from "./SpainScreen";
 import FranceScreen from "./FranceScreen";
+import RandomScreen from "./RandomScreen";
 
 const Drawer = createDrawerNavigator();
 
@@ -104,6 +105,33 @@ const CountryNavigator = () => {
         component={CountryScreen}
         options={{ title: "Country" }}
       />
+      <Stack.Screen
+        name="U.S.A"
+        component={UsaScreen}
+        options={{ title: "U.S.A" }}
+      />
+      <Stack.Screen
+        name="Spain"
+        component={SpainScreen}
+        options={{ title: "Spain" }}
+      />
+      <Stack.Screen
+        name="France"
+        component={FranceScreen}
+        options={{ title: "France" }}
+      />
+    </Stack.Navigator>
+  );
+};
+const RandomNavigator = () => {
+  const Stack = createStackNavigator();
+  return (
+    <Stack.Navigator screenOptions={screenOptions}>
+      <Stack.Screen
+        name="Random"
+        component={RandomScreen}
+        options={{ title: "Random" }}
+      />
     </Stack.Navigator>
   );
 };
@@ -181,6 +209,11 @@ const Main = () => {
           name="Find Your City"
           component={CountryNavigator}
           options={{ title: "Find Your City" }}
+        />
+        <Drawer.Screen
+          name="Bartender's Choice"
+          component={RandomNavigator}
+          options={{ title: "Bartender's Choice" }}
         />
         <Drawer.Screen
           name="Contact"

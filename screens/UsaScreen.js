@@ -3,7 +3,7 @@ import { Text, View } from "react-native";
 const UsaScreen = () => {
   return (
     <View>
-      <Text>FUUUUUUUUCk</Text>
+      <Text>FUUUUUUUUCK USA</Text>
     </View>
   );
 };
