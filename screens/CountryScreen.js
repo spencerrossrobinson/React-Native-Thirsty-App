@@ -1,4 +1,10 @@
-import { Text, View, ScrollView } from "react-native";
+import {
+  Text,
+  View,
+  ScrollView,
+  TouchableOpacity,
+  StyleSheet,
+} from "react-native";
 import { Button, Card } from "react-native-elements";
 import { useState } from "react";
 import { FRANCE } from "../shared/franceCities";
@@ -44,22 +50,59 @@ const CountryScreen = ({ navigation }) => {
   return (
     <ScrollView>
       <FeaturedItem item={featUsa} />
-      <Button
-        title="Explore USA"
+      <TouchableOpacity
+        style={styles.button}
         onPress={() => navigation.navigate("U.S.A")}
-      />
+      >
+        <Text
+          style={{
+            color: "white",
+          }}
+        >
+          Explore U.S.A
+        </Text>
+      </TouchableOpacity>
       <FeaturedItem item={featSpain} />
-      <Button
-        title="Explore Spain"
+      <TouchableOpacity
+        style={styles.button}
         onPress={() => navigation.navigate("Spain")}
-      />
+      >
+        <Text
+          style={{
+            color: "white",
+          }}
+        >
+          Explore Spain
+        </Text>
+      </TouchableOpacity>
       <FeaturedItem item={featFrance} />
-      <Button
-        title="Explore France"
+      <TouchableOpacity
+        style={styles.button}
         onPress={() => navigation.navigate("France")}
-      />
+      >
+        <Text
+          style={{
+            color: "white",
+          }}
+        >
+          Explore France
+        </Text>
+      </TouchableOpacity>
     </ScrollView>
   );
 };
+
+const styles = StyleSheet.create({
+  button: {
+    alignItems: "center",
+    backgroundColor: "#f95738",
+    padding: 10,
+    marginLeft: 50,
+    marginRight: 50,
+    marginTop: 5,
+    borderRadius: 25,
+    marginBottom: 10,
+  },
+});
 
 export default CountryScreen;

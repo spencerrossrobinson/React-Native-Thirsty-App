@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Button } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import { Card, Rating } from "react-native-elements";
 import { BARS } from "../shared/bars";
 import { useState } from "react";
@@ -57,9 +57,29 @@ const RandomScreen = () => {
           style={{ padding: 5, marginBottom: 25 }}
         />
       </Card>
-      <Button onPress={changeBarValue} title="random" />
+      <TouchableOpacity style={styles.button} onPress={changeBarValue}>
+        <Text
+          style={{
+            color: "white",
+          }}
+        >
+          Random Bar
+        </Text>
+      </TouchableOpacity>
     </View>
   );
 };
 
+const styles = StyleSheet.create({
+  button: {
+    alignItems: "center",
+    backgroundColor: "#f95738",
+    padding: 10,
+    marginLeft: 50,
+    marginRight: 50,
+    marginTop: 5,
+    borderRadius: 25,
+    marginBottom: 10,
+  },
+});
 export default RandomScreen;

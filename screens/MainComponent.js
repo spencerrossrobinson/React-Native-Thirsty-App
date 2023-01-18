@@ -1,5 +1,6 @@
 import Constants from "expo-constants";
-import { View, Platform } from "react-native";
+import { View, Platform, Image, Text, StyleSheet } from "react-native";
+import { Icon } from "react-native-elements";
 import BarInfoScreen from "./BarInfoScreen";
 import DirectoryScreen from "./DirectoryScreen";
 import { createStackNavigator } from "@react-navigation/stack";
@@ -16,6 +17,7 @@ import UsaScreen from "./UsaScreen";
 import SpainScreen from "./SpainScreen";
 import FranceScreen from "./FranceScreen";
 import RandomScreen from "./RandomScreen";
+import logoImg from "../assets/images/logo.webp";
 
 const Drawer = createDrawerNavigator();
 
@@ -31,7 +33,17 @@ const HomeNavigator = () => {
       <Stack.Screen
         name="Home"
         component={HomeScreen}
-        options={{ title: "Thirsty." }}
+        options={({ navigation }) => ({
+          title: "Home",
+          headerLeft: () => (
+            <Icon
+              name="bars"
+              type="font-awesome"
+              iconStyle={styles.stackIcon}
+              onPress={() => navigation.toggleDrawer()}
+            />
+          ),
+        })}
       />
     </Stack.Navigator>
   );
@@ -43,7 +55,17 @@ const AboutNavigator = () => {
       <Stack.Screen
         name="About"
         component={AboutScreen}
-        options={{ title: "About" }}
+        options={({ navigation }) => ({
+          title: "About",
+          headerLeft: () => (
+            <Icon
+              name="bars"
+              type="font-awesome"
+              iconStyle={styles.stackIcon}
+              onPress={() => navigation.toggleDrawer()}
+            />
+          ),
+        })}
       />
     </Stack.Navigator>
   );
@@ -91,7 +113,17 @@ const ContactNavigator = () => {
       <Stack.Screen
         name="Contact"
         component={ContactScreen}
-        options={{ title: "Contact" }}
+        options={({ navigation }) => ({
+          title: "Contact",
+          headerLeft: () => (
+            <Icon
+              name="bars"
+              type="font-awesome"
+              iconStyle={styles.stackIcon}
+              onPress={() => navigation.toggleDrawer()}
+            />
+          ),
+        })}
       />
     </Stack.Navigator>
   );
@@ -103,7 +135,17 @@ const CountryNavigator = () => {
       <Stack.Screen
         name="Country"
         component={CountryScreen}
-        options={{ title: "Country" }}
+        options={({ navigation }) => ({
+          title: "Find Your City",
+          headerLeft: () => (
+            <Icon
+              name="bars"
+              type="font-awesome"
+              iconStyle={styles.stackIcon}
+              onPress={() => navigation.toggleDrawer()}
+            />
+          ),
+        })}
       />
       <Stack.Screen
         name="U.S.A"
@@ -130,7 +172,17 @@ const RandomNavigator = () => {
       <Stack.Screen
         name="Random"
         component={RandomScreen}
-        options={{ title: "Random" }}
+        options={({ navigation }) => ({
+          title: "Bartender's Choice",
+          headerLeft: () => (
+            <Icon
+              name="bars"
+              type="font-awesome"
+              iconStyle={styles.stackIcon}
+              onPress={() => navigation.toggleDrawer()}
+            />
+          ),
+        })}
       />
     </Stack.Navigator>
   );
@@ -143,7 +195,17 @@ const DirectoryNavigator = () => {
       <Stack.Screen
         name="Bar Directory"
         component={DirectoryScreen}
-        options={{ title: "Bar Directory" }}
+        options={({ navigation }) => ({
+          title: "Bar Directory",
+          headerLeft: () => (
+            <Icon
+              name="bars"
+              type="font-awesome"
+              iconStyle={styles.stackIcon}
+              onPress={() => navigation.toggleDrawer()}
+            />
+          ),
+        })}
       />
       <Stack.Screen
         name="BarInfo"
@@ -153,6 +215,20 @@ const DirectoryNavigator = () => {
     </Stack.Navigator>
   );
 };
+
+const CustomDrawerContent = (props) => (
+  <DrawerContentScrollView {...props}>
+    <View style={styles.drawerHeader}>
+      <View style={{ flex: 1 }}>
+        <Image source={logoImg} style={styles.drawerImage} />
+      </View>
+      <View style={{ flex: 1 }}>
+        <Text style={styles.drawerHeaderText}>Thirsty.</Text>
+      </View>
+    </View>
+    <DrawerItemList {...props} labelStyle={{ fontWeight: "bold" }} />
+  </DrawerContentScrollView>
+);
 
 const Main = () => {
   return (
@@ -164,68 +240,164 @@ const Main = () => {
     >
       <Drawer.Navigator
         initialRouteName="Home"
-        drawerStyle={{ backgroundColor: "#f4d35e" }}
-        drawerContent={(props) => {
-          const filteredProps = {
-            ...props,
-            state: {
-              ...props.state,
-              routeNames: props.state.routeNames.filter((routeName) => {
-                routeName !== "U.S.A" &&
-                  routeName !== "Spain" &&
-                  routeName !== "France";
-              }),
-              routes: props.state.routes.filter(
-                (route) =>
-                  route.name !== "U.S.A" &&
-                  route.name !== "Spain" &&
-                  route.name !== "France"
-              ),
-            },
-          };
-          return (
-            <DrawerContentScrollView {...filteredProps}>
-              <DrawerItemList {...filteredProps} />
-            </DrawerContentScrollView>
-          );
-        }}
+        drawerStyle={{ backgroundColor: "#f7c59f" }}
+        drawerContent={CustomDrawerContent}
+        // Invisible Drawer Screen Props no longer needed but saving just in Case
+        // drawerContent={(props) => {
+        //   const filteredProps = {
+        //     ...props,
+        //     state: {
+        //       ...props.state,
+        //       routeNames: props.state.routeNames.filter((routeName) => {
+        //         routeName !== "U.S.A" &&
+        //           routeName !== "Spain" &&
+        //           routeName !== "France";
+        //       }),
+        //       routes: props.state.routes.filter(
+        //         (route) =>
+        //           route.name !== "U.S.A" &&
+        //           route.name !== "Spain" &&
+        //           route.name !== "France"
+        //       ),
+        //     },
+        //   };
+        //   return (
+        //     <DrawerContentScrollView {...filteredProps}>
+        //       <DrawerItemList {...filteredProps} />
+        //     </DrawerContentScrollView>
+        //   );
+        // }}
       >
         <Drawer.Screen
           name="Home"
           component={HomeNavigator}
-          options={{ title: "Home" }}
+          options={{
+            title: "Home",
+            drawerIcon: ({ color }) => (
+              <Icon
+                name="home"
+                type="font-awesome"
+                size={24}
+                iconStyle={{ width: 24 }}
+                color={color}
+              />
+            ),
+          }}
         />
         <Drawer.Screen
           name="About"
           component={AboutNavigator}
-          options={{ title: "About" }}
+          options={{
+            title: "About",
+            drawerIcon: ({ color }) => (
+              <Icon
+                name="info"
+                type="font-awesome"
+                size={24}
+                iconStyle={{ width: 24 }}
+                color={color}
+              />
+            ),
+          }}
         />
         <Drawer.Screen
           name="Bar Directory"
           component={DirectoryNavigator}
-          options={{ title: "Bar Directory" }}
+          options={{
+            title: "Bar Directory",
+            drawerIcon: ({ color }) => (
+              <Icon
+                name="globe"
+                type="font-awesome"
+                size={24}
+                iconStyle={{ width: 24 }}
+                color={color}
+              />
+            ),
+          }}
         />
         <Drawer.Screen
           name="Find Your City"
           component={CountryNavigator}
-          options={{ title: "Find Your City" }}
+          options={{
+            title: "Find Your City",
+            drawerIcon: ({ color }) => (
+              <Icon
+                name="plane"
+                type="font-awesome"
+                size={24}
+                iconStyle={{ width: 24 }}
+                color={color}
+              />
+            ),
+          }}
         />
         <Drawer.Screen
           name="Bartender's Choice"
           component={RandomNavigator}
-          options={{ title: "Bartender's Choice" }}
+          options={{
+            title: "Bartender's Choice",
+            drawerIcon: ({ color }) => (
+              <Icon
+                name="glass"
+                type="font-awesome"
+                size={24}
+                iconStyle={{ width: 24 }}
+                color={color}
+              />
+            ),
+          }}
         />
         <Drawer.Screen
           name="Contact"
           component={ContactNavigator}
-          options={{ title: "Contact" }}
+          options={{
+            title: "Contact",
+            drawerIcon: ({ color }) => (
+              <Icon
+                name="envelope-square"
+                type="font-awesome"
+                size={24}
+                iconStyle={{ width: 24 }}
+                color={color}
+              />
+            ),
+          }}
         />
-        <Drawer.Screen name="U.S.A" component={UsaNavigator} />
+        {/* Invisible Drawer Screen no longer needed but saving just in case */}
+        {/* <Drawer.Screen name="U.S.A" component={UsaNavigator} />
         <Drawer.Screen name="Spain" component={SpainNavigator} />
-        <Drawer.Screen name="France" component={FranceNavigator} />
+        <Drawer.Screen name="France" component={FranceNavigator} /> */}
       </Drawer.Navigator>
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  stackIcon: {
+    marginLeft: 10,
+    color: "#fff",
+    fontSize: 24,
+  },
+  drawerHeader: {
+    backgroundColor: "#0d3b66",
+    height: 140,
+    alignItems: "center",
+    justifyContent: "center",
+    flex: 1,
+    flexDirection: "row",
+  },
+  drawerImage: {
+    margin: 30,
+    height: 60,
+    width: 60,
+    borderRadius: 50,
+  },
+  drawerHeaderText: {
+    color: "#fff",
+    fontSize: 24,
+    fontWeight: "bold",
+  },
+});
 
 export default Main;
