@@ -23,7 +23,7 @@ const Drawer = createDrawerNavigator();
 
 const screenOptions = {
   headerTintColor: "#fff",
-  headerStyle: { backgroundColor: "#f95738" },
+  headerStyle: { backgroundColor: "#cc5803" },
 };
 
 const HomeNavigator = () => {
@@ -240,7 +240,7 @@ const Main = () => {
     >
       <Drawer.Navigator
         initialRouteName="Home"
-        drawerStyle={{ backgroundColor: "#f7c59f" }}
+        drawerStyle={{ backgroundColor: "#ffc971" }}
         drawerContent={CustomDrawerContent}
         // Invisible Drawer Screen Props no longer needed but saving just in Case
         // drawerContent={(props) => {
@@ -380,7 +380,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
   },
   drawerHeader: {
-    backgroundColor: "#0d3b66",
+    backgroundColor: "#cc5803",
     height: 140,
     alignItems: "center",
     justifyContent: "center",

@@ -8,9 +8,9 @@ const HomeScreen = () => {
       <Card
         containerStyle={{
           padding: 3,
-          borderColor: "#0d3b66",
+          borderColor: "#ffb627",
           borderRadius: 20,
-          backgroundColor: "#0d3b66",
+          backgroundColor: "#ffb627",
         }}
       >
         <Card.Image

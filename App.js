@@ -5,8 +5,8 @@ const MyTheme = {
   ...DefaultTheme,
   colors: {
     ...DefaultTheme.colors,
-    primary: "#f95738",
-    background: "#faf0ca",
+    primary: "#cc5803",
+    background: "#ffecd1",
   },
 };
 

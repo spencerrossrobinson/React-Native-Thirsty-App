@@ -73,7 +73,7 @@ const RandomScreen = () => {
 const styles = StyleSheet.create({
   button: {
     alignItems: "center",
-    backgroundColor: "#f95738",
+    backgroundColor: "#ff9505",
     padding: 10,
     marginLeft: 50,
     marginRight: 50,
