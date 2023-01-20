@@ -8,7 +8,7 @@ const ContactScreen = () => {
       <Input placeholder="First Name" />
       <Input placeholder="Last Name" />
       <Input placeholder="Email" />
-      <Button type="outline" title="Submit" />
+      <Button type="outline" title="Send Us Your Info" />
     </Card>
   );
 };
