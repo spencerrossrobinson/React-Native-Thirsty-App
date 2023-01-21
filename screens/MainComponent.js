@@ -18,7 +18,7 @@ import SpainScreen from "./SpainScreen";
 import FranceScreen from "./FranceScreen";
 import RandomScreen from "./RandomScreen";
 import logoImg from "../assets/images/logo.webp";
-
+import SelectScreen from "./SelectScreen";
 const Drawer = createDrawerNavigator();
 
 const screenOptions = {
@@ -115,6 +115,28 @@ const ContactNavigator = () => {
         component={ContactScreen}
         options={({ navigation }) => ({
           title: "Contact",
+          headerLeft: () => (
+            <Icon
+              name="bars"
+              type="font-awesome"
+              iconStyle={styles.stackIcon}
+              onPress={() => navigation.toggleDrawer()}
+            />
+          ),
+        })}
+      />
+    </Stack.Navigator>
+  );
+};
+const SelectNavigator = () => {
+  const Stack = createStackNavigator();
+  return (
+    <Stack.Navigator screenOptions={screenOptions}>
+      <Stack.Screen
+        name="Select"
+        component={SelectScreen}
+        options={({ navigation }) => ({
+          title: "Find My Bar",
           headerLeft: () => (
             <Icon
               name="bars"
@@ -340,6 +362,22 @@ const Main = () => {
             drawerIcon: ({ color }) => (
               <Icon
                 name="glass"
+                type="font-awesome"
+                size={24}
+                iconStyle={{ width: 24 }}
+                color={color}
+              />
+            ),
+          }}
+        />
+        <Drawer.Screen
+          name="Find My Bar"
+          component={SelectNavigator}
+          options={{
+            title: "Find My Bar",
+            drawerIcon: ({ color }) => (
+              <Icon
+                name="search"
                 type="font-awesome"
                 size={24}
                 iconStyle={{ width: 24 }}

@@ -1,7 +1,9 @@
 import { Text, View } from "react-native";
 import { Card, Rating } from "react-native-elements";
+import { useState } from "react";
 
 const RenderBar = ({ bar }) => {
+  const [rating, setRating] = useState(5);
   if (bar) {
     return (
       <Card
@@ -40,8 +42,9 @@ const RenderBar = ({ bar }) => {
         </Text>
         <Rating
           showRating
-          fractions="{1}"
-          startingValue="{3.3}"
+          startingValue={rating}
+          imageSize={40}
+          onFinishRating={(value) => setRating(value)}
           style={{ padding: 5, marginBottom: 25 }}
         />
       </Card>
