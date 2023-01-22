@@ -136,7 +136,7 @@ const SelectNavigator = () => {
         name="Select"
         component={SelectScreen}
         options={({ navigation }) => ({
-          title: "Find My Bar",
+          title: "Find My Cocktail",
           headerLeft: () => (
             <Icon
               name="bars"
@@ -374,7 +374,7 @@ const Main = () => {
           name="Find My Bar"
           component={SelectNavigator}
           options={{
-            title: "Find My Bar",
+            title: "Find My Cocktail",
             drawerIcon: ({ color }) => (
               <Icon
                 name="search"
