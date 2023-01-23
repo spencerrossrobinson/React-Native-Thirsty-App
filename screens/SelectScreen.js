@@ -1,4 +1,11 @@
-import { Text, View, ScrollView } from "react-native";
+import {
+  Text,
+  View,
+  ScrollView,
+  StyleSheet,
+  TouchableOpacity,
+  Flatlist,
+} from "react-native";
 import {
   Switch,
   CheckBox,
@@ -10,7 +17,7 @@ import {
 import { useState } from "react";
 import { COCKTAIL } from "../shared/cocktail";
 
-const SelectScreen = () => {
+const SelectScreen = ({ navigation }) => {
   const filterGin = COCKTAIL.filter((value) => value.type === "gin");
   const filterGinBalanced = COCKTAIL.filter(
     (value) => value.taste === "balanced" && value.type === "gin"
@@ -33,15 +40,16 @@ const SelectScreen = () => {
   const Gin = () => {
     return (
       <Card>
-        <Card.Title>Gin</Card.Title>
+        <Card.Title style={styles.title}>Gin Cocktail Index</Card.Title>
         <Card.Divider />
         {filterGin.map((value) => {
           return (
             <ListItem key={value.id}>
-              <Avatar rounded source={value.img} />
+              <Avatar size="xlarge" rounded source={value.img} />
               <ListItem.Content>
-                <ListItem.Title>{value.name}</ListItem.Title>
-                <ListItem.Subtitle>{value.type}</ListItem.Subtitle>
+                <ListItem.Title style={styles.text}>
+                  {value.name}
+                </ListItem.Title>
               </ListItem.Content>
             </ListItem>
           );
@@ -52,15 +60,16 @@ const SelectScreen = () => {
   const Whiskey = () => {
     return (
       <Card>
-        <Card.Title>Whiskey</Card.Title>
+        <Card.Title style={styles.title}>Whiskey Cocktail Index</Card.Title>
         <Card.Divider />
         {filterWhiskey.map((value) => {
           return (
             <ListItem key={value.id}>
-              <Avatar rounded source={value.img} />
+              <Avatar size="xlarge" rounded source={value.img} />
               <ListItem.Content>
-                <ListItem.Title>{value.name}</ListItem.Title>
-                <ListItem.Subtitle>{value.type}</ListItem.Subtitle>
+                <ListItem.Title style={styles.text}>
+                  {value.name}
+                </ListItem.Title>
               </ListItem.Content>
             </ListItem>
           );
@@ -77,6 +86,8 @@ const SelectScreen = () => {
             borderRadius: 20,
             margin: 10,
             backgroundColor: "#e2711d",
+            borderColor: "white",
+            borderWidth: 5,
           }}
         >
           {filterWhiskeyBalanced.map((value) => {
@@ -85,8 +96,10 @@ const SelectScreen = () => {
                 key={value.id}
                 style={{
                   margin: 20,
-                  backgroundColor: "#ffc971",
+                  backgroundColor: "#ffb627",
                   borderRadius: 20,
+                  borderColor: "white",
+                  borderWidth: 5,
                 }}
               >
                 <Card.Image
@@ -98,18 +111,32 @@ const SelectScreen = () => {
                       style={{
                         color: "white",
                         textAlign: "center",
-                        fontSize: 20,
+                        fontSize: 50,
                       }}
                     >
                       {value.name}
                     </Text>
                   </View>
                 </Card.Image>
-                <Text style={{ margin: 20, textAlign: "center" }}>
-                  {value.prep}
+                <Text
+                  style={{
+                    margin: 5,
+                    textAlign: "center",
+                    color: "white",
+                    fontSize: 20,
+                  }}
+                >
+                  Preperation: {value.prep}
                 </Text>
-                <Text style={{ margin: 20, textAlign: "center" }}>
-                  {value.style}
+                <Text
+                  style={{
+                    margin: 5,
+                    textAlign: "center",
+                    color: "white",
+                    fontSize: 20,
+                  }}
+                >
+                  Served: {value.style}
                 </Text>
               </View>
             );
@@ -125,6 +152,8 @@ const SelectScreen = () => {
             borderRadius: 20,
             margin: 10,
             backgroundColor: "#e2711d",
+            borderColor: "white",
+            borderWidth: 5,
           }}
         >
           {filterWhiskeyBoozy.map((value) => {
@@ -133,8 +162,10 @@ const SelectScreen = () => {
                 key={value.id}
                 style={{
                   margin: 20,
-                  backgroundColor: "#ffc971",
+                  backgroundColor: "#ffb627",
                   borderRadius: 20,
+                  borderColor: "white",
+                  borderWidth: 5,
                 }}
               >
                 <Card.Image
@@ -146,18 +177,32 @@ const SelectScreen = () => {
                       style={{
                         color: "white",
                         textAlign: "center",
-                        fontSize: 20,
+                        fontSize: 50,
                       }}
                     >
                       {value.name}
                     </Text>
                   </View>
                 </Card.Image>
-                <Text style={{ margin: 20, textAlign: "center" }}>
-                  {value.prep}
+                <Text
+                  style={{
+                    margin: 5,
+                    textAlign: "center",
+                    color: "white",
+                    fontSize: 20,
+                  }}
+                >
+                  Preparation: {value.prep}
                 </Text>
-                <Text style={{ margin: 20, textAlign: "center" }}>
-                  {value.style}
+                <Text
+                  style={{
+                    margin: 5,
+                    textAlign: "center",
+                    color: "white",
+                    fontSize: 20,
+                  }}
+                >
+                  Served: {value.style}
                 </Text>
               </View>
             );
@@ -176,6 +221,8 @@ const SelectScreen = () => {
             borderRadius: 20,
             margin: 10,
             backgroundColor: "#e2711d",
+            borderColor: "white",
+            borderWidth: 5,
           }}
         >
           {filterGinBalanced.map((value) => {
@@ -184,8 +231,10 @@ const SelectScreen = () => {
                 key={value.id}
                 style={{
                   margin: 20,
-                  backgroundColor: "#ffc971",
+                  backgroundColor: "#ffb627",
                   borderRadius: 20,
+                  borderColor: "white",
+                  borderWidth: 5,
                 }}
               >
                 <Card.Image
@@ -197,18 +246,32 @@ const SelectScreen = () => {
                       style={{
                         color: "white",
                         textAlign: "center",
-                        fontSize: 20,
+                        fontSize: 50,
                       }}
                     >
                       {value.name}
                     </Text>
                   </View>
                 </Card.Image>
-                <Text style={{ margin: 20, textAlign: "center" }}>
-                  {value.prep}
+                <Text
+                  style={{
+                    margin: 5,
+                    textAlign: "center",
+                    color: "white",
+                    fontSize: 20,
+                  }}
+                >
+                  Preparation: {value.prep}
                 </Text>
-                <Text style={{ margin: 20, textAlign: "center" }}>
-                  {value.style}
+                <Text
+                  style={{
+                    margin: 5,
+                    textAlign: "center",
+                    color: "white",
+                    fontSize: 20,
+                  }}
+                >
+                  Served: {value.style}
                 </Text>
               </View>
             );
@@ -224,6 +287,8 @@ const SelectScreen = () => {
             borderRadius: 20,
             margin: 10,
             backgroundColor: "#e2711d",
+            borderColor: "white",
+            borderWidth: 5,
           }}
         >
           {filterGinBoozy.map((value) => {
@@ -232,8 +297,10 @@ const SelectScreen = () => {
                 key={value.id}
                 style={{
                   margin: 20,
-                  backgroundColor: "#ffc971",
+                  backgroundColor: "#ffb627",
                   borderRadius: 20,
+                  borderColor: "white",
+                  borderWidth: 5,
                 }}
               >
                 <Card.Image
@@ -245,18 +312,32 @@ const SelectScreen = () => {
                       style={{
                         color: "white",
                         textAlign: "center",
-                        fontSize: 20,
+                        fontSize: 50,
                       }}
                     >
                       {value.name}
                     </Text>
                   </View>
                 </Card.Image>
-                <Text style={{ margin: 20, textAlign: "center" }}>
-                  {value.prep}
+                <Text
+                  style={{
+                    margin: 5,
+                    textAlign: "center",
+                    color: "white",
+                    fontSize: 20,
+                  }}
+                >
+                  Preparation: {value.prep}
                 </Text>
-                <Text style={{ margin: 20, textAlign: "center" }}>
-                  {value.style}
+                <Text
+                  style={{
+                    margin: 5,
+                    textAlign: "center",
+                    color: "white",
+                    fontSize: 20,
+                  }}
+                >
+                  Served: {value.style}
                 </Text>
               </View>
             );
@@ -269,8 +350,9 @@ const SelectScreen = () => {
   const BalNBoozy = () => {
     return (
       <View>
-        <Text>Balanced or Boozy?</Text>
+        <Text style={styles.header}>Balanced or Boozy?</Text>
         <CheckBox
+          center
           title="Balanced"
           checked={balanced}
           onPress={() => {
@@ -279,6 +361,7 @@ const SelectScreen = () => {
           }}
         />
         <CheckBox
+          center
           title="Boozy"
           checked={boozy}
           onPress={() => {
@@ -294,9 +377,9 @@ const SelectScreen = () => {
     if (gin === true) {
       return (
         <View>
-          <Gin />
           <BalNBoozy />
           <GinSelector />
+          <Gin />
         </View>
       );
     }
@@ -305,9 +388,9 @@ const SelectScreen = () => {
     if (whiskey === true) {
       return (
         <View>
-          <Whiskey />
           <BalNBoozy />
           <WhiskeySelector />
+          <Whiskey />
         </View>
       );
     }
@@ -321,8 +404,9 @@ const SelectScreen = () => {
   };
   return (
     <ScrollView>
-      <Text>Choose Your Base</Text>
+      <Text style={styles.header}>Choose Your Base</Text>
       <CheckBox
+        center
         title="Gin"
         checked={gin}
         onPress={() => {
@@ -331,6 +415,7 @@ const SelectScreen = () => {
         }}
       />
       <CheckBox
+        center
         title="Whiskey"
         checked={whiskey}
         onPress={() => {
@@ -339,11 +424,59 @@ const SelectScreen = () => {
         }}
       />
       <TestGin />
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => navigation.navigate("Bar Directory")}
+      >
+        <Text>Find Me a Bar that Serves This</Text>
+      </TouchableOpacity>
       <TestWhiskey />
-      <Button title="reset" onPress={() => resetForm()} />
+      <TouchableOpacity onPress={() => resetForm()} style={styles.header}>
+        <Text
+          style={{
+            textAlign: "center",
+            color: "white",
+            fontSize: 26,
+          }}
+        >
+          Reset Your Choices
+        </Text>
+      </TouchableOpacity>
     </ScrollView>
   );
 };
+
+const styles = StyleSheet.create({
+  header: {
+    textAlign: "center",
+    fontSize: 32,
+    margin: 10,
+    backgroundColor: "#ffb627",
+    padding: 10,
+    borderRadius: 20,
+    color: "white",
+    borderColor: "white",
+    borderWidth: 5,
+  },
+  button: {
+    alignItems: "center",
+    backgroundColor: "#ff9505",
+    padding: 10,
+    marginLeft: 50,
+    marginRight: 50,
+    marginTop: 5,
+    borderRadius: 25,
+    marginBottom: 10,
+  },
+  text: {
+    fontSize: 20,
+  },
+  title: {
+    fontSize: 30,
+    fontWeight: "bold",
+  },
+});
+
 export default SelectScreen;
 
 // if statement with a set state source of truth, return true, slowly work through little by little for each switch boolean condition, filter for true
