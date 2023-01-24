@@ -8,6 +8,8 @@ export const COCKTAIL = [
     taste: "balanced",
     prep: "shaken",
     style: "up",
+    recipe:
+      "In a shaker combine 2oz of preferred Gin, 3/4 oz of Lime Juice, 3/4 oz of 1:1 Simple Syrup. Add Ice and shake until cocktail is properly chilled. Double Strain into Chilled Glass. Add Lime wheel for garnish",
     img: gimletImg,
   },
   {
@@ -17,6 +19,8 @@ export const COCKTAIL = [
     taste: "boozy",
     prep: "shaken or stirred",
     style: "up",
+    recipe:
+      "In a shaker combine 2oz of preferred Gin, 3/4 oz of Lime Juice, 3/4 oz of 1:1 Simple Syrup. Add Ice and shake until cocktail is properly chilled. Double Strain into Chilled Glass. Add Lime wheel for garnish",
     img: gimletImg,
   },
   {
@@ -26,6 +30,8 @@ export const COCKTAIL = [
     taste: "boozy",
     prep: "stirred",
     style: "rocks",
+    recipe:
+      "In a shaker combine 2oz of preferred Gin, 3/4 oz of Lime Juice, 3/4 oz of 1:1 Simple Syrup. Add Ice and shake until cocktail is properly chilled. Double Strain into Chilled Glass. Add Lime wheel for garnish",
     img: gimletImg,
   },
   {
@@ -35,6 +41,8 @@ export const COCKTAIL = [
     taste: "boozy",
     prep: "stirred",
     style: "rocks",
+    recipe:
+      "In a shaker combine 2oz of preferred Gin, 3/4 oz of Lime Juice, 3/4 oz of 1:1 Simple Syrup. Add Ice and shake until cocktail is properly chilled. Double Strain into Chilled Glass. Add Lime wheel for garnish",
     img: gimletImg,
   },
   {
@@ -44,6 +52,8 @@ export const COCKTAIL = [
     taste: "boozy",
     prep: "stirred",
     style: "up",
+    recipe:
+      "In a shaker combine 2oz of preferred Gin, 3/4 oz of Lime Juice, 3/4 oz of 1:1 Simple Syrup. Add Ice and shake until cocktail is properly chilled. Double Strain into Chilled Glass. Add Lime wheel for garnish",
     img: gimletImg,
   },
   {
@@ -53,6 +63,8 @@ export const COCKTAIL = [
     taste: "balanced",
     prep: "shaken",
     style: "up",
+    recipe:
+      "In a shaker combine 2oz of preferred Gin, 3/4 oz of Lime Juice, 3/4 oz of 1:1 Simple Syrup. Add Ice and shake until cocktail is properly chilled. Double Strain into Chilled Glass. Add Lime wheel for garnish",
     img: gimletImg,
   },
   {
@@ -62,6 +74,8 @@ export const COCKTAIL = [
     taste: "balanced",
     prep: "shaken",
     style: "rocks",
+    recipe:
+      "In a shaker combine 2oz of preferred Gin, 3/4 oz of Lime Juice, 3/4 oz of 1:1 Simple Syrup. Add Ice and shake until cocktail is properly chilled. Double Strain into Chilled Glass. Add Lime wheel for garnish",
     img: gimletImg,
   },
   {
@@ -71,6 +85,8 @@ export const COCKTAIL = [
     taste: "balanced",
     prep: "shaken",
     style: "rocks",
+    recipe:
+      "In a shaker combine 2oz of preferred Gin, 3/4 oz of Lime Juice, 3/4 oz of 1:1 Simple Syrup. Add Ice and shake until cocktail is properly chilled. Double Strain into Chilled Glass. Add Lime wheel for garnish",
     img: gimletImg,
   },
   {
@@ -80,6 +96,8 @@ export const COCKTAIL = [
     taste: "boozy",
     prep: "stirred",
     style: "rocks",
+    recipe:
+      "In a shaker combine 2oz of preferred Gin, 3/4 oz of Lime Juice, 3/4 oz of 1:1 Simple Syrup. Add Ice and shake until cocktail is properly chilled. Double Strain into Chilled Glass. Add Lime wheel for garnish",
     img: gimletImg,
   },
   {
@@ -89,6 +107,8 @@ export const COCKTAIL = [
     taste: "balanced",
     prep: "shaken",
     style: "up",
+    recipe:
+      "In a shaker combine 2oz of preferred Gin, 3/4 oz of Lime Juice, 3/4 oz of 1:1 Simple Syrup. Add Ice and shake until cocktail is properly chilled. Double Strain into Chilled Glass. Add Lime wheel for garnish",
     img: gimletImg,
   },
   {
@@ -98,6 +118,8 @@ export const COCKTAIL = [
     taste: "balanced",
     prep: "shaken",
     style: "rocks",
+    recipe:
+      "In a shaker combine 2oz of preferred Gin, 3/4 oz of Lime Juice, 3/4 oz of 1:1 Simple Syrup. Add Ice and shake until cocktail is properly chilled. Double Strain into Chilled Glass. Add Lime wheel for garnish",
     img: gimletImg,
   },
   {
@@ -107,6 +129,8 @@ export const COCKTAIL = [
     taste: "balanced",
     prep: "shaken",
     style: "rocks",
+    recipe:
+      "In a shaker combine 2oz of preferred Gin, 3/4 oz of Lime Juice, 3/4 oz of 1:1 Simple Syrup. Add Ice and shake until cocktail is properly chilled. Double Strain into Chilled Glass. Add Lime wheel for garnish",
     img: gimletImg,
   },
 ];

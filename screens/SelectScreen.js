@@ -16,6 +16,7 @@ import {
 } from "react-native-elements";
 import { useState } from "react";
 import { COCKTAIL } from "../shared/cocktail";
+import * as Animatable from "react-native-animatable";
 
 const SelectScreen = ({ navigation }) => {
   const filterGin = COCKTAIL.filter((value) => value.type === "gin");
@@ -39,175 +40,209 @@ const SelectScreen = ({ navigation }) => {
 
   const Gin = () => {
     return (
-      <Card>
-        <Card.Title style={styles.title}>Gin Cocktail Index</Card.Title>
-        <Card.Divider />
-        {filterGin.map((value) => {
-          return (
-            <ListItem key={value.id}>
-              <Avatar size="xlarge" rounded source={value.img} />
-              <ListItem.Content>
-                <ListItem.Title style={styles.text}>
-                  {value.name}
-                </ListItem.Title>
-              </ListItem.Content>
-            </ListItem>
-          );
-        })}
-      </Card>
+      <Animatable.View animation="fadeInDownBig" duration={1000} delay={500}>
+        <Card>
+          <Card.Title style={styles.title}>Gin Cocktail Index</Card.Title>
+          <Card.Divider />
+          {filterGin.map((value) => {
+            return (
+              <ListItem key={value.id}>
+                <Avatar size="xlarge" rounded source={value.img} />
+                <ListItem.Content>
+                  <ListItem.Title style={styles.text}>
+                    {value.name}
+                  </ListItem.Title>
+                </ListItem.Content>
+              </ListItem>
+            );
+          })}
+        </Card>
+      </Animatable.View>
     );
   };
   const Whiskey = () => {
     return (
-      <Card>
-        <Card.Title style={styles.title}>Whiskey Cocktail Index</Card.Title>
-        <Card.Divider />
-        {filterWhiskey.map((value) => {
-          return (
-            <ListItem key={value.id}>
-              <Avatar size="xlarge" rounded source={value.img} />
-              <ListItem.Content>
-                <ListItem.Title style={styles.text}>
-                  {value.name}
-                </ListItem.Title>
-              </ListItem.Content>
-            </ListItem>
-          );
-        })}
-      </Card>
+      <Animatable.View animation="fadeInDownBig" duration={1000} delay={500}>
+        <Card>
+          <Card.Title style={styles.title}>Whiskey Cocktail Index</Card.Title>
+          <Card.Divider />
+          {filterWhiskey.map((value) => {
+            return (
+              <ListItem key={value.id}>
+                <Avatar size="xlarge" rounded source={value.img} />
+                <ListItem.Content>
+                  <ListItem.Title style={styles.text}>
+                    {value.name}
+                  </ListItem.Title>
+                </ListItem.Content>
+              </ListItem>
+            );
+          })}
+        </Card>
+      </Animatable.View>
     );
   };
   const WhiskeySelector = () => {
     if (whiskey === true && balanced === true) {
       return (
-        <Card
-          containerStyle={{
-            padding: 0,
-            borderRadius: 20,
-            margin: 10,
-            backgroundColor: "#e2711d",
-            borderColor: "white",
-            borderWidth: 5,
-          }}
-        >
-          {filterWhiskeyBalanced.map((value) => {
-            return (
-              <View
-                key={value.id}
-                style={{
-                  margin: 20,
-                  backgroundColor: "#ffb627",
-                  borderRadius: 20,
-                  borderColor: "white",
-                  borderWidth: 5,
-                }}
-              >
-                <Card.Image
-                  source={value.img}
-                  style={{ borderTopLeftRadius: 20, borderTopRightRadius: 20 }}
-                >
-                  <View style={{ justifyContent: "center", flex: 1 }}>
-                    <Text
-                      style={{
-                        color: "white",
-                        textAlign: "center",
-                        fontSize: 50,
-                      }}
-                    >
-                      {value.name}
-                    </Text>
-                  </View>
-                </Card.Image>
-                <Text
+        <Animatable.View animation="fadeInRightBig" duration={1000} delay={500}>
+          <Card
+            containerStyle={{
+              padding: 0,
+              borderRadius: 20,
+              margin: 10,
+              backgroundColor: "#e2711d",
+              borderColor: "white",
+              borderWidth: 5,
+            }}
+          >
+            {filterWhiskeyBalanced.map((value) => {
+              return (
+                <View
+                  key={value.id}
                   style={{
-                    margin: 5,
-                    textAlign: "center",
-                    color: "white",
-                    fontSize: 20,
+                    margin: 20,
+                    backgroundColor: "#ffb627",
+                    borderRadius: 20,
+                    borderColor: "white",
+                    borderWidth: 5,
                   }}
                 >
-                  Preperation: {value.prep}
-                </Text>
-                <Text
-                  style={{
-                    margin: 5,
-                    textAlign: "center",
-                    color: "white",
-                    fontSize: 20,
-                  }}
-                >
-                  Served: {value.style}
-                </Text>
-              </View>
-            );
-          })}
-        </Card>
+                  <Card.Image
+                    source={value.img}
+                    style={{
+                      borderTopLeftRadius: 20,
+                      borderTopRightRadius: 20,
+                    }}
+                  >
+                    <View style={{ justifyContent: "center", flex: 1 }}>
+                      <Text
+                        style={{
+                          color: "white",
+                          textAlign: "center",
+                          fontSize: 50,
+                        }}
+                      >
+                        {value.name}
+                      </Text>
+                    </View>
+                  </Card.Image>
+                  <Text
+                    style={{
+                      margin: 5,
+                      textAlign: "center",
+                      color: "white",
+                      fontSize: 20,
+                    }}
+                  >
+                    Preperation: {value.prep}
+                  </Text>
+                  <Text
+                    style={{
+                      margin: 5,
+                      textAlign: "center",
+                      color: "white",
+                      fontSize: 20,
+                    }}
+                  >
+                    Served: {value.style}
+                  </Text>
+                  <Text
+                    style={{
+                      margin: 5,
+                      textAlign: "center",
+                      color: "white",
+                      fontSize: 10,
+                    }}
+                  >
+                    Recipe: {value.recipe}
+                  </Text>
+                </View>
+              );
+            })}
+          </Card>
+        </Animatable.View>
       );
     }
     if (whiskey === true && boozy === true) {
       return (
-        <Card
-          containerStyle={{
-            padding: 0,
-            borderRadius: 20,
-            margin: 10,
-            backgroundColor: "#e2711d",
-            borderColor: "white",
-            borderWidth: 5,
-          }}
-        >
-          {filterWhiskeyBoozy.map((value) => {
-            return (
-              <View
-                key={value.id}
-                style={{
-                  margin: 20,
-                  backgroundColor: "#ffb627",
-                  borderRadius: 20,
-                  borderColor: "white",
-                  borderWidth: 5,
-                }}
-              >
-                <Card.Image
-                  source={value.img}
-                  style={{ borderTopLeftRadius: 20, borderTopRightRadius: 20 }}
-                >
-                  <View style={{ justifyContent: "center", flex: 1 }}>
-                    <Text
-                      style={{
-                        color: "white",
-                        textAlign: "center",
-                        fontSize: 50,
-                      }}
-                    >
-                      {value.name}
-                    </Text>
-                  </View>
-                </Card.Image>
-                <Text
+        <Animatable.View animation="fadeInRightBig" duration={1000} delay={500}>
+          <Card
+            containerStyle={{
+              padding: 0,
+              borderRadius: 20,
+              margin: 10,
+              backgroundColor: "#e2711d",
+              borderColor: "white",
+              borderWidth: 5,
+            }}
+          >
+            {filterWhiskeyBoozy.map((value) => {
+              return (
+                <View
+                  key={value.id}
                   style={{
-                    margin: 5,
-                    textAlign: "center",
-                    color: "white",
-                    fontSize: 20,
+                    margin: 20,
+                    backgroundColor: "#ffb627",
+                    borderRadius: 20,
+                    borderColor: "white",
+                    borderWidth: 5,
                   }}
                 >
-                  Preparation: {value.prep}
-                </Text>
-                <Text
-                  style={{
-                    margin: 5,
-                    textAlign: "center",
-                    color: "white",
-                    fontSize: 20,
-                  }}
-                >
-                  Served: {value.style}
-                </Text>
-              </View>
-            );
-          })}
-        </Card>
+                  <Card.Image
+                    source={value.img}
+                    style={{
+                      borderTopLeftRadius: 20,
+                      borderTopRightRadius: 20,
+                    }}
+                  >
+                    <View style={{ justifyContent: "center", flex: 1 }}>
+                      <Text
+                        style={{
+                          color: "white",
+                          textAlign: "center",
+                          fontSize: 50,
+                        }}
+                      >
+                        {value.name}
+                      </Text>
+                    </View>
+                  </Card.Image>
+                  <Text
+                    style={{
+                      margin: 5,
+                      textAlign: "center",
+                      color: "white",
+                      fontSize: 20,
+                    }}
+                  >
+                    Preparation: {value.prep}
+                  </Text>
+                  <Text
+                    style={{
+                      margin: 5,
+                      textAlign: "center",
+                      color: "white",
+                      fontSize: 20,
+                    }}
+                  >
+                    Served: {value.style}
+                  </Text>
+                  <Text
+                    style={{
+                      margin: 5,
+                      textAlign: "center",
+                      color: "white",
+                      fontSize: 10,
+                    }}
+                  >
+                    Recipe: {value.recipe}
+                  </Text>
+                </View>
+              );
+            })}
+          </Card>
+        </Animatable.View>
       );
     }
   };
@@ -215,141 +250,171 @@ const SelectScreen = ({ navigation }) => {
   const GinSelector = () => {
     if (gin === true && balanced === true) {
       return (
-        <Card
-          containerStyle={{
-            padding: 0,
-            borderRadius: 20,
-            margin: 10,
-            backgroundColor: "#e2711d",
-            borderColor: "white",
-            borderWidth: 5,
-          }}
-        >
-          {filterGinBalanced.map((value) => {
-            return (
-              <View
-                key={value.id}
-                style={{
-                  margin: 20,
-                  backgroundColor: "#ffb627",
-                  borderRadius: 20,
-                  borderColor: "white",
-                  borderWidth: 5,
-                }}
-              >
-                <Card.Image
-                  source={value.img}
-                  style={{ borderTopLeftRadius: 20, borderTopRightRadius: 20 }}
-                >
-                  <View style={{ justifyContent: "center", flex: 1 }}>
-                    <Text
-                      style={{
-                        color: "white",
-                        textAlign: "center",
-                        fontSize: 50,
-                      }}
-                    >
-                      {value.name}
-                    </Text>
-                  </View>
-                </Card.Image>
-                <Text
+        <Animatable.View animation="fadeInRightBig" duration={1000} delay={500}>
+          <Card
+            containerStyle={{
+              padding: 0,
+              borderRadius: 20,
+              margin: 10,
+              backgroundColor: "#e2711d",
+              borderColor: "white",
+              borderWidth: 5,
+            }}
+          >
+            {filterGinBalanced.map((value) => {
+              return (
+                <View
+                  key={value.id}
                   style={{
-                    margin: 5,
-                    textAlign: "center",
-                    color: "white",
-                    fontSize: 20,
+                    margin: 20,
+                    backgroundColor: "#ffb627",
+                    borderRadius: 20,
+                    borderColor: "white",
+                    borderWidth: 5,
                   }}
                 >
-                  Preparation: {value.prep}
-                </Text>
-                <Text
-                  style={{
-                    margin: 5,
-                    textAlign: "center",
-                    color: "white",
-                    fontSize: 20,
-                  }}
-                >
-                  Served: {value.style}
-                </Text>
-              </View>
-            );
-          })}
-        </Card>
+                  <Card.Image
+                    source={value.img}
+                    style={{
+                      borderTopLeftRadius: 20,
+                      borderTopRightRadius: 20,
+                    }}
+                  >
+                    <View style={{ justifyContent: "center", flex: 1 }}>
+                      <Text
+                        style={{
+                          color: "white",
+                          textAlign: "center",
+                          fontSize: 50,
+                        }}
+                      >
+                        {value.name}
+                      </Text>
+                    </View>
+                  </Card.Image>
+                  <Text
+                    style={{
+                      margin: 5,
+                      textAlign: "center",
+                      color: "white",
+                      fontSize: 20,
+                    }}
+                  >
+                    Preparation: {value.prep}
+                  </Text>
+                  <Text
+                    style={{
+                      margin: 5,
+                      textAlign: "center",
+                      color: "white",
+                      fontSize: 20,
+                    }}
+                  >
+                    Served: {value.style}
+                  </Text>
+                  <Text
+                    style={{
+                      margin: 5,
+                      textAlign: "center",
+                      color: "white",
+                      fontSize: 10,
+                    }}
+                  >
+                    Recipe: {value.recipe}
+                  </Text>
+                </View>
+              );
+            })}
+          </Card>
+        </Animatable.View>
       );
     }
     if (gin === true && boozy === true) {
       return (
-        <Card
-          containerStyle={{
-            padding: 0,
-            borderRadius: 20,
-            margin: 10,
-            backgroundColor: "#e2711d",
-            borderColor: "white",
-            borderWidth: 5,
-          }}
-        >
-          {filterGinBoozy.map((value) => {
-            return (
-              <View
-                key={value.id}
-                style={{
-                  margin: 20,
-                  backgroundColor: "#ffb627",
-                  borderRadius: 20,
-                  borderColor: "white",
-                  borderWidth: 5,
-                }}
-              >
-                <Card.Image
-                  source={value.img}
-                  style={{ borderTopLeftRadius: 20, borderTopRightRadius: 20 }}
-                >
-                  <View style={{ justifyContent: "center", flex: 1 }}>
-                    <Text
-                      style={{
-                        color: "white",
-                        textAlign: "center",
-                        fontSize: 50,
-                      }}
-                    >
-                      {value.name}
-                    </Text>
-                  </View>
-                </Card.Image>
-                <Text
+        <Animatable.View animation="fadeInRightBig" duration={1000} delay={500}>
+          <Card
+            containerStyle={{
+              padding: 0,
+              borderRadius: 20,
+              margin: 10,
+              backgroundColor: "#e2711d",
+              borderColor: "white",
+              borderWidth: 5,
+            }}
+          >
+            {filterGinBoozy.map((value) => {
+              return (
+                <View
+                  key={value.id}
                   style={{
-                    margin: 5,
-                    textAlign: "center",
-                    color: "white",
-                    fontSize: 20,
+                    margin: 20,
+                    backgroundColor: "#ffb627",
+                    borderRadius: 20,
+                    borderColor: "white",
+                    borderWidth: 5,
                   }}
                 >
-                  Preparation: {value.prep}
-                </Text>
-                <Text
-                  style={{
-                    margin: 5,
-                    textAlign: "center",
-                    color: "white",
-                    fontSize: 20,
-                  }}
-                >
-                  Served: {value.style}
-                </Text>
-              </View>
-            );
-          })}
-        </Card>
+                  <Card.Image
+                    source={value.img}
+                    style={{
+                      borderTopLeftRadius: 20,
+                      borderTopRightRadius: 20,
+                    }}
+                  >
+                    <View style={{ justifyContent: "center", flex: 1 }}>
+                      <Text
+                        style={{
+                          color: "white",
+                          textAlign: "center",
+                          fontSize: 50,
+                        }}
+                      >
+                        {value.name}
+                      </Text>
+                    </View>
+                  </Card.Image>
+                  <Text
+                    style={{
+                      margin: 5,
+                      textAlign: "center",
+                      color: "white",
+                      fontSize: 20,
+                    }}
+                  >
+                    Preparation: {value.prep}
+                  </Text>
+                  <Text
+                    style={{
+                      margin: 5,
+                      textAlign: "center",
+                      color: "white",
+                      fontSize: 20,
+                    }}
+                  >
+                    Served: {value.style}
+                  </Text>
+                  <Text
+                    style={{
+                      margin: 5,
+                      textAlign: "center",
+                      color: "white",
+                      fontSize: 10,
+                    }}
+                  >
+                    Recipe: {value.recipe}
+                  </Text>
+                </View>
+              );
+            })}
+          </Card>
+        </Animatable.View>
       );
     }
   };
 
   const BalNBoozy = () => {
     return (
-      <View>
+      <Animatable.View animation="fadeInRightBig" duration={1000} delay={500}>
         <Text style={styles.header}>Balanced or Boozy?</Text>
         <CheckBox
           center
@@ -369,7 +434,7 @@ const SelectScreen = ({ navigation }) => {
             setBalanced(!true);
           }}
         />
-      </View>
+      </Animatable.View>
     );
   };
 
@@ -424,13 +489,13 @@ const SelectScreen = ({ navigation }) => {
         }}
       />
       <TestGin />
+      <TestWhiskey />
       <TouchableOpacity
         style={styles.button}
         onPress={() => navigation.navigate("Bar Directory")}
       >
         <Text>Find Me a Bar that Serves This</Text>
       </TouchableOpacity>
-      <TestWhiskey />
       <TouchableOpacity onPress={() => resetForm()} style={styles.header}>
         <Text
           style={{
