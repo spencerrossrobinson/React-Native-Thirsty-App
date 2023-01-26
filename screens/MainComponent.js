@@ -19,6 +19,8 @@ import FranceScreen from "./FranceScreen";
 import RandomScreen from "./RandomScreen";
 import logoImg from "../assets/images/logo.webp";
 import SelectScreen from "./SelectScreen";
+import FavoriteScreen from "./FavoriteScreen";
+
 const Drawer = createDrawerNavigator();
 
 const screenOptions = {
@@ -209,6 +211,28 @@ const RandomNavigator = () => {
     </Stack.Navigator>
   );
 };
+const FavoriteNavigator = () => {
+  const Stack = createStackNavigator();
+  return (
+    <Stack.Navigator screenOptions={screenOptions}>
+      <Stack.Screen
+        name="Favorite"
+        component={FavoriteScreen}
+        options={({ navigation }) => ({
+          title: "Favorite",
+          headerLeft: () => (
+            <Icon
+              name="bars"
+              type="font-awesome"
+              iconStyle={styles.stackIcon}
+              onPress={() => navigation.toggleDrawer()}
+            />
+          ),
+        })}
+      />
+    </Stack.Navigator>
+  );
+};
 
 const DirectoryNavigator = () => {
   const Stack = createStackNavigator();
@@ -375,6 +399,22 @@ const Main = () => {
           component={SelectNavigator}
           options={{
             title: "Find My Cocktail",
+            drawerIcon: ({ color }) => (
+              <Icon
+                name="search"
+                type="font-awesome"
+                size={24}
+                iconStyle={{ width: 24 }}
+                color={color}
+              />
+            ),
+          }}
+        />
+        <Drawer.Screen
+          name="Favorite"
+          component={FavoriteNavigator}
+          options={{
+            title: "Favorite",
             drawerIcon: ({ color }) => (
               <Icon
                 name="search"

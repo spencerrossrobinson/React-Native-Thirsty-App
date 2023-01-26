@@ -29,6 +29,9 @@ const HomeScreen = () => {
               fontSize: 26,
               margin: 5,
               padding: 10,
+              borderWidth: 5,
+              borderColor: "white",
+              borderRadius: 15,
             }}
           >
             Welcome to Thirsty. Bar and Cocktail App
@@ -39,6 +42,7 @@ const HomeScreen = () => {
               textAlign: "center",
               padding: 5,
               marginBottom: 10,
+              fontSize: 16,
             }}
           >
             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aperiam

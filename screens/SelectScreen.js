@@ -5,6 +5,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   Flatlist,
+  Touchable,
 } from "react-native";
 import {
   Switch,
@@ -13,10 +14,12 @@ import {
   ListItem,
   Card,
   Avatar,
+  Icon,
 } from "react-native-elements";
 import { useState } from "react";
 import { COCKTAIL } from "../shared/cocktail";
 import * as Animatable from "react-native-animatable";
+import FavoriteScreen from "./FavoriteScreen";
 
 const SelectScreen = ({ navigation }) => {
   //gin
@@ -58,6 +61,7 @@ const SelectScreen = ({ navigation }) => {
   const [tequila, setTequila] = useState(false);
   const [balanced, setBalanced] = useState(false);
   const [boozy, setBoozy] = useState(false);
+  const [FAVORITE, setFavorites] = useState([]);
 
   const Gin = () => {
     return (
@@ -147,7 +151,7 @@ const SelectScreen = ({ navigation }) => {
       </Animatable.View>
     );
   };
-  const WhiskeySelector = () => {
+  const WhiskeySelector = ({ FAVORITE, setFavorites }) => {
     if (whiskey === true && balanced === true) {
       return (
         <Animatable.View animation="fadeInRightBig" duration={1000} delay={500}>
@@ -222,6 +226,12 @@ const SelectScreen = ({ navigation }) => {
                   >
                     Recipe: {value.recipe}
                   </Text>
+                  <TouchableOpacity
+                    style={styles.button}
+                    onPress={() => setFavorites([...FAVORITE, value])}
+                  >
+                    <Text style={styles.text}>Add as a Favorite</Text>
+                  </TouchableOpacity>
                 </View>
               );
             })}
@@ -303,6 +313,12 @@ const SelectScreen = ({ navigation }) => {
                   >
                     Recipe: {value.recipe}
                   </Text>
+                  <TouchableOpacity
+                    style={styles.button}
+                    onPress={() => setFavorites([...FAVORITE, value])}
+                  >
+                    <Text style={styles.text}>Add as a Favorite</Text>
+                  </TouchableOpacity>
                 </View>
               );
             })}
@@ -312,7 +328,7 @@ const SelectScreen = ({ navigation }) => {
     }
   };
 
-  const GinSelector = () => {
+  const GinSelector = ({ FAVORITE, setFavorites }) => {
     if (gin === true && balanced === true) {
       return (
         <Animatable.View animation="fadeInRightBig" duration={1000} delay={500}>
@@ -387,6 +403,12 @@ const SelectScreen = ({ navigation }) => {
                   >
                     Recipe: {value.recipe}
                   </Text>
+                  <TouchableOpacity
+                    style={styles.button}
+                    onPress={() => setFavorites([...FAVORITE, value])}
+                  >
+                    <Text style={styles.text}>Add as a Favorite</Text>
+                  </TouchableOpacity>
                 </View>
               );
             })}
@@ -468,6 +490,12 @@ const SelectScreen = ({ navigation }) => {
                   >
                     Recipe: {value.recipe}
                   </Text>
+                  <TouchableOpacity
+                    style={styles.button}
+                    onPress={() => setFavorites([...FAVORITE, value])}
+                  >
+                    <Text style={styles.text}>Add as a Favorite</Text>
+                  </TouchableOpacity>
                 </View>
               );
             })}
@@ -476,7 +504,7 @@ const SelectScreen = ({ navigation }) => {
       );
     }
   };
-  const RumSelector = () => {
+  const RumSelector = ({ FAVORITE, setFavorites }) => {
     if (rum === true && balanced === true) {
       return (
         <Animatable.View animation="fadeInRightBig" duration={1000} delay={500}>
@@ -551,6 +579,12 @@ const SelectScreen = ({ navigation }) => {
                   >
                     Recipe: {value.recipe}
                   </Text>
+                  <TouchableOpacity
+                    style={styles.button}
+                    onPress={() => setFavorites([...FAVORITE, value])}
+                  >
+                    <Text style={styles.text}>Add as a Favorite</Text>
+                  </TouchableOpacity>
                 </View>
               );
             })}
@@ -632,6 +666,12 @@ const SelectScreen = ({ navigation }) => {
                   >
                     Recipe: {value.recipe}
                   </Text>
+                  <TouchableOpacity
+                    style={styles.button}
+                    onPress={() => setFavorites([...FAVORITE, value])}
+                  >
+                    <Text style={styles.text}>Add as a Favorite</Text>
+                  </TouchableOpacity>
                 </View>
               );
             })}
@@ -640,7 +680,7 @@ const SelectScreen = ({ navigation }) => {
       );
     }
   };
-  const TequilaSelector = () => {
+  const TequilaSelector = ({ FAVORITE, setFavorites }) => {
     if (tequila === true && balanced === true) {
       return (
         <Animatable.View animation="fadeInRightBig" duration={1000} delay={500}>
@@ -715,6 +755,12 @@ const SelectScreen = ({ navigation }) => {
                   >
                     Recipe: {value.recipe}
                   </Text>
+                  <TouchableOpacity
+                    style={styles.button}
+                    onPress={() => setFavorites([...FAVORITE, value])}
+                  >
+                    <Text style={styles.text}>Add as a Favorite</Text>
+                  </TouchableOpacity>
                 </View>
               );
             })}
@@ -796,6 +842,12 @@ const SelectScreen = ({ navigation }) => {
                   >
                     Recipe: {value.recipe}
                   </Text>
+                  <TouchableOpacity
+                    style={styles.button}
+                    onPress={() => setFavorites([...FAVORITE, value])}
+                  >
+                    <Text style={styles.text}>Add as a Favorite</Text>
+                  </TouchableOpacity>
                 </View>
               );
             })}
@@ -835,7 +887,7 @@ const SelectScreen = ({ navigation }) => {
       return (
         <View>
           <BalNBoozy />
-          <GinSelector />
+          <GinSelector FAVORITE={FAVORITE} setFavorites={setFavorites} />
           <Gin />
         </View>
       );
@@ -846,7 +898,7 @@ const SelectScreen = ({ navigation }) => {
       return (
         <View>
           <BalNBoozy />
-          <WhiskeySelector />
+          <WhiskeySelector FAVORITE={FAVORITE} setFavorites={setFavorites} />
           <Whiskey />
         </View>
       );
@@ -857,7 +909,7 @@ const SelectScreen = ({ navigation }) => {
       return (
         <View>
           <BalNBoozy />
-          <RumSelector />
+          <RumSelector FAVORITE={FAVORITE} setFavorites={setFavorites} />
           <Rum />
         </View>
       );
@@ -868,7 +920,7 @@ const SelectScreen = ({ navigation }) => {
       return (
         <View>
           <BalNBoozy />
-          <TequilaSelector />
+          <TequilaSelector FAVORITE={FAVORITE} setFavorites={setFavorites} />
           <Tequila />
         </View>
       );
@@ -940,6 +992,8 @@ const SelectScreen = ({ navigation }) => {
       >
         <Text>Find Me a Bar that Serves This</Text>
       </TouchableOpacity>
+      <Text style={styles.header}>Saved Favorites</Text>
+      <FavoriteScreen FAVORITE={FAVORITE} />
       <TouchableOpacity onPress={() => resetForm()} style={styles.header}>
         <Text
           style={{
