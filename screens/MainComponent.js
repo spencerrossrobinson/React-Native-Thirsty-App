@@ -20,6 +20,7 @@ import RandomScreen from "./RandomScreen";
 import logoImg from "../assets/images/logo.webp";
 import SelectScreen from "./SelectScreen";
 import FavoriteScreen from "./FavoriteScreen";
+import SearchScreen from "./SearchScreen";
 
 const Drawer = createDrawerNavigator();
 
@@ -139,6 +140,28 @@ const SelectNavigator = () => {
         component={SelectScreen}
         options={({ navigation }) => ({
           title: "Find My Cocktail",
+          headerLeft: () => (
+            <Icon
+              name="bars"
+              type="font-awesome"
+              iconStyle={styles.stackIcon}
+              onPress={() => navigation.toggleDrawer()}
+            />
+          ),
+        })}
+      />
+    </Stack.Navigator>
+  );
+};
+const SearchNavigator = () => {
+  const Stack = createStackNavigator();
+  return (
+    <Stack.Navigator screenOptions={screenOptions}>
+      <Stack.Screen
+        name="Select"
+        component={SearchScreen}
+        options={({ navigation }) => ({
+          title: "Search Bars",
           headerLeft: () => (
             <Icon
               name="bars"
@@ -354,6 +377,22 @@ const Main = () => {
             drawerIcon: ({ color }) => (
               <Icon
                 name="globe"
+                type="font-awesome"
+                size={24}
+                iconStyle={{ width: 24 }}
+                color={color}
+              />
+            ),
+          }}
+        />
+        <Drawer.Screen
+          name="Search Bars"
+          component={SearchNavigator}
+          options={{
+            title: "Search Bars",
+            drawerIcon: ({ color }) => (
+              <Icon
+                name="search"
                 type="font-awesome"
                 size={24}
                 iconStyle={{ width: 24 }}
