@@ -4,35 +4,35 @@ import { ListItem, SearchBar, Avatar, Badge } from "react-native-elements";
 import { BARS } from "../shared/bars";
 import { COCKTAIL } from "../shared/cocktail";
 
-const SearchScreen = ({ navigation }) => {
+const SearchCocktailScreen = ({ navigation }) => {
   const [search, setSearch] = useState("");
   const [results, setResults] = useState([]);
 
-  const updateSearch = (search) => {
-    setSearch(search);
-    let filteredResults = BARS.filter((bar) =>
-      bar.name.toLowerCase().includes(search.toLowerCase())
-    );
-    setResults(filteredResults);
-  };
-  //   const updateSearchCocktail = (search) => {
+  //   const updateSearch = (search) => {
   //     setSearch(search);
-  //     let filteredResults = COCKTAIL.filter((bar) =>
+  //     let filteredResults = BARS.filter((bar) =>
   //       bar.name.toLowerCase().includes(search.toLowerCase())
   //     );
   //     setResults(filteredResults);
   //   };
+  const updateSearch = (search) => {
+    setSearch(search);
+    let filteredResults = COCKTAIL.filter((bar) =>
+      bar.name.toLowerCase().includes(search.toLowerCase())
+    );
+    setResults(filteredResults);
+  };
 
   return (
     <ScrollView>
       <SearchBar
-        placeholder="Search for a bar..."
+        placeholder="Search for a cocktail..."
         onChangeText={updateSearch}
         value={search}
       />
       {results.map((bar) => (
         <ListItem
-          onPress={() => navigation.navigate("BarInfo", { bar })}
+          //   onPress={() => navigation.navigate("BarInfo", { bar })}
           //   onPress={() =>
           //     navigation.navigate("Bar Directory", {
           //       screen: "BarInfo",
@@ -42,7 +42,7 @@ const SearchScreen = ({ navigation }) => {
           key={bar.id}
         >
           <View>
-            <Avatar source={bar.image} size="xlarge" rounded />
+            <Avatar source={bar.img} size="xlarge" rounded />
             <Badge
               value={bar.rating}
               status="success"
@@ -56,7 +56,7 @@ const SearchScreen = ({ navigation }) => {
           <ListItem.Content>
             <ListItem.Title>{bar.name}</ListItem.Title>
             <ListItem.Subtitle>
-              {bar.location} - {bar.money}
+              {bar.type} - {bar.prep}
             </ListItem.Subtitle>
           </ListItem.Content>
         </ListItem>
@@ -65,4 +65,4 @@ const SearchScreen = ({ navigation }) => {
   );
 };
 
-export default SearchScreen;
+export default SearchCocktailScreen;

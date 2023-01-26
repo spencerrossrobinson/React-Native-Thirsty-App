@@ -2,7 +2,7 @@ import Constants from "expo-constants";
 import { View, Platform, Image, Text, StyleSheet } from "react-native";
 import { Icon } from "react-native-elements";
 import BarInfoScreen from "./BarInfoScreen";
-import DirectoryScreen from "./DirectoryScreen";
+import SearchCocktailScreen from "./SearchCocktailScreen";
 import { createStackNavigator } from "@react-navigation/stack";
 import {
   createDrawerNavigator,
@@ -153,12 +153,34 @@ const SelectNavigator = () => {
     </Stack.Navigator>
   );
 };
+const CocktailNavigator = () => {
+  const Stack = createStackNavigator();
+  return (
+    <Stack.Navigator screenOptions={screenOptions}>
+      <Stack.Screen
+        name="Search Cocktails"
+        component={SearchCocktailScreen}
+        options={({ navigation }) => ({
+          title: "Search Cocktails",
+          headerLeft: () => (
+            <Icon
+              name="bars"
+              type="font-awesome"
+              iconStyle={styles.stackIcon}
+              onPress={() => navigation.toggleDrawer()}
+            />
+          ),
+        })}
+      />
+    </Stack.Navigator>
+  );
+};
 const SearchNavigator = () => {
   const Stack = createStackNavigator();
   return (
     <Stack.Navigator screenOptions={screenOptions}>
       <Stack.Screen
-        name="Select"
+        name="Search Bars"
         component={SearchScreen}
         options={({ navigation }) => ({
           title: "Search Bars",
@@ -171,6 +193,11 @@ const SearchNavigator = () => {
             />
           ),
         })}
+      />
+      <Stack.Screen
+        name="BarInfo"
+        component={BarInfoScreen}
+        options={({ route }) => ({ title: route.params.bar.name })}
       />
     </Stack.Navigator>
   );
@@ -257,33 +284,33 @@ const FavoriteNavigator = () => {
   );
 };
 
-const DirectoryNavigator = () => {
-  const Stack = createStackNavigator();
-  return (
-    <Stack.Navigator initialRouteName="Directory" screenOptions={screenOptions}>
-      <Stack.Screen
-        name="Bar Directory"
-        component={DirectoryScreen}
-        options={({ navigation }) => ({
-          title: "Bar Directory",
-          headerLeft: () => (
-            <Icon
-              name="bars"
-              type="font-awesome"
-              iconStyle={styles.stackIcon}
-              onPress={() => navigation.toggleDrawer()}
-            />
-          ),
-        })}
-      />
-      <Stack.Screen
-        name="BarInfo"
-        component={BarInfoScreen}
-        options={({ route }) => ({ title: route.params.bar.name })}
-      />
-    </Stack.Navigator>
-  );
-};
+// const DirectoryNavigator = () => {
+//   const Stack = createStackNavigator();
+//   return (
+//     <Stack.Navigator initialRouteName="Directory" screenOptions={screenOptions}>
+//       <Stack.Screen
+//         name="Bar Directory"
+//         component={DirectoryScreen}
+//         options={({ navigation }) => ({
+//           title: "Bar Directory",
+//           headerLeft: () => (
+//             <Icon
+//               name="bars"
+//               type="font-awesome"
+//               iconStyle={styles.stackIcon}
+//               onPress={() => navigation.toggleDrawer()}
+//             />
+//           ),
+//         })}
+//       />
+//       <Stack.Screen
+//         name="BarInfo"
+//         component={BarInfoScreen}
+//         options={({ route }) => ({ title: route.params.bar.name })}
+//       />
+//     </Stack.Navigator>
+//   );
+// };
 
 const CustomDrawerContent = (props) => (
   <DrawerContentScrollView {...props}>
@@ -369,7 +396,7 @@ const Main = () => {
             ),
           }}
         />
-        <Drawer.Screen
+        {/* <Drawer.Screen
           name="Bar Directory"
           component={DirectoryNavigator}
           options={{
@@ -384,12 +411,28 @@ const Main = () => {
               />
             ),
           }}
-        />
+        /> */}
         <Drawer.Screen
           name="Search Bars"
           component={SearchNavigator}
           options={{
             title: "Search Bars",
+            drawerIcon: ({ color }) => (
+              <Icon
+                name="search"
+                type="font-awesome"
+                size={24}
+                iconStyle={{ width: 24 }}
+                color={color}
+              />
+            ),
+          }}
+        />
+        <Drawer.Screen
+          name="Search Cocktails"
+          component={CocktailNavigator}
+          options={{
+            title: "Search Cocktails",
             drawerIcon: ({ color }) => (
               <Icon
                 name="search"
