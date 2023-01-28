@@ -21,6 +21,7 @@ import logoImg from "../assets/images/logo.webp";
 import SelectScreen from "./SelectScreen";
 import FavoriteScreen from "./FavoriteScreen";
 import SearchScreen from "./SearchScreen";
+import AddScreen from "./AddScreen";
 
 const Drawer = createDrawerNavigator();
 
@@ -261,15 +262,15 @@ const RandomNavigator = () => {
     </Stack.Navigator>
   );
 };
-const FavoriteNavigator = () => {
+const AddNavigator = () => {
   const Stack = createStackNavigator();
   return (
     <Stack.Navigator screenOptions={screenOptions}>
       <Stack.Screen
-        name="Favorite"
-        component={FavoriteScreen}
+        name="Add"
+        component={AddScreen}
         options={({ navigation }) => ({
-          title: "Favorite",
+          title: "Submit a Bar",
           headerLeft: () => (
             <Icon
               name="bars"
@@ -467,7 +468,7 @@ const Main = () => {
             title: "Bartender's Choice",
             drawerIcon: ({ color }) => (
               <Icon
-                name="glass"
+                name="beer"
                 type="font-awesome"
                 size={24}
                 iconStyle={{ width: 24 }}
@@ -483,7 +484,7 @@ const Main = () => {
             title: "Find My Cocktail",
             drawerIcon: ({ color }) => (
               <Icon
-                name="search"
+                name="glass"
                 type="font-awesome"
                 size={24}
                 iconStyle={{ width: 24 }}
@@ -493,13 +494,13 @@ const Main = () => {
           }}
         />
         <Drawer.Screen
-          name="Favorite"
-          component={FavoriteNavigator}
+          name="Add"
+          component={AddNavigator}
           options={{
-            title: "Favorite",
+            title: "Send Us Your Bar",
             drawerIcon: ({ color }) => (
               <Icon
-                name="search"
+                name="comments"
                 type="font-awesome"
                 size={24}
                 iconStyle={{ width: 24 }}
